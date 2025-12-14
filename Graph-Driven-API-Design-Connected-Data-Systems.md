@@ -1221,6 +1221,12 @@ In this chapter, you learned:
 
 ---
 
+# Part II - Core Concepts and Patterns
+
+This part establishes the essential building blocks for graph-driven API development. You'll learn how to model data as interconnected entities and relationships, master graph query languages for efficient traversal, design robust API architectures that leverage graph capabilities, and implement security patterns that protect your connected data systems.
+
+---
+
 # Chapter 4: Graph Data Modeling - Thinking in Relationships
 
 ## The Art of Modeling Connected Data
