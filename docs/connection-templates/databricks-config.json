@@ -1,0 +1,47 @@
+{
+  "name": "Databricks Connection for SAP BDC",
+  "description": "Databricks workspace configuration for consuming SAP Business Data Cloud products",
+  "connection": {
+    "workspaceUrl": "https://<workspace-id>.cloud.databricks.com",
+    "clusterId": "<cluster-id>",
+    "httpPath": "/sql/1.0/warehouses/<warehouse-id>"
+  },
+  "authentication": {
+    "method": "token",
+    "personalAccessToken": "<databricks-pat>",
+    "alternativeMethod": "OAuth2",
+    "oauthConfig": {
+      "clientId": "<oauth-client-id>",
+      "clientSecret": "<oauth-client-secret>"
+    }
+  },
+  "sapBdcIntegration": {
+    "dataProductCatalog": "sap_bdc",
+    "schema": "data_products",
+    "zeroCopySharing": true,
+    "deltaSharing": {
+      "enabled": true,
+      "profileUrl": "<delta-sharing-profile-url>",
+      "bearerToken": "<delta-sharing-token>"
+    }
+  },
+  "icebergConfiguration": {
+    "catalog": "spark_catalog",
+    "catalogType": "hive_metastore",
+    "warehouse": "/user/hive/warehouse",
+    "icebergVersion": "1.4.0",
+    "fileFormat": "parquet",
+    "enableSnapshotIsolation": true,
+    "enableTimeTravel": true
+  },
+  "sparkConfig": {
+    "spark.sql.catalog.spark_catalog": "org.apache.iceberg.spark.SparkCatalog",
+    "spark.sql.catalog.spark_catalog.type": "hive",
+    "spark.sql.extensions": "org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions"
+  },
+  "performance": {
+    "autoOptimize": true,
+    "autoCompact": true,
+    "cacheEnabled": true
+  }
+}

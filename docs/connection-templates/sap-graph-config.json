@@ -1,0 +1,46 @@
+{
+  "name": "SAP Graph API Configuration",
+  "description": "SAP Graph via Integration Suite for business object navigation",
+  "endpoint": {
+    "baseUrl": "https://graph.sap/v1",
+    "protocol": "https"
+  },
+  "authentication": {
+    "type": "OAuth2",
+    "tokenEndpoint": "https://<tenant>.authentication.sap.hana.ondemand.com/oauth/token",
+    "grantType": "client_credentials",
+    "clientId": "<your-client-id>",
+    "clientSecret": "<your-client-secret>",
+    "scope": "graph.read graph.write"
+  },
+  "apiFormat": {
+    "odata": {
+      "version": "v4",
+      "endpoint": "/odata/v4"
+    },
+    "graphql": {
+      "endpoint": "/graphql",
+      "introspection": true
+    }
+  },
+  "businessObjects": {
+    "examples": [
+      "SalesOrder",
+      "PurchaseOrder",
+      "Customer",
+      "Product",
+      "Employee",
+      "Delivery"
+    ]
+  },
+  "configuration": {
+    "timeout": 30000,
+    "retryPolicy": {
+      "maxRetries": 3,
+      "backoffMultiplier": 2
+    },
+    "rateLimiting": {
+      "requestsPerSecond": 100
+    }
+  }
+}

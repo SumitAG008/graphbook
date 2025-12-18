@@ -1,0 +1,62 @@
+{
+  "name": "Microsoft Fabric Connection for SAP BDC",
+  "description": "Microsoft Fabric configuration for consuming SAP Business Data Cloud products",
+  "connection": {
+    "workspaceId": "<fabric-workspace-id>",
+    "capacityId": "<fabric-capacity-id>",
+    "tenantId": "<azure-tenant-id>",
+    "region": "eastus"
+  },
+  "authentication": {
+    "method": "ServicePrincipal",
+    "servicePrincipal": {
+      "clientId": "<sp-client-id>",
+      "clientSecret": "<sp-client-secret>",
+      "tenantId": "<azure-tenant-id>"
+    },
+    "alternativeMethod": "ManagedIdentity",
+    "managedIdentity": {
+      "clientId": "<managed-identity-client-id>"
+    }
+  },
+  "sapBdcIntegration": {
+    "dataProductCatalog": "sap_bdc",
+    "lakehouse": "SAP_DataProducts",
+    "zeroCopySharing": true,
+    "oneLakeShortcut": {
+      "enabled": true,
+      "shortcutType": "AdlsGen2",
+      "sourceUrl": "<bdc-storage-url>"
+    }
+  },
+  "icebergSupport": {
+    "enabled": true,
+    "catalogType": "OneLake",
+    "tableFormat": "Delta",
+    "icebergCompatibility": {
+      "conversionEnabled": true,
+      "maintainIcebergMetadata": true
+    }
+  },
+  "dataEngineering": {
+    "sparkPools": {
+      "defaultPool": "Standard",
+      "nodeSize": "Medium",
+      "autoScale": {
+        "enabled": true,
+        "minNodes": 1,
+        "maxNodes": 10
+      }
+    }
+  },
+  "powerBI": {
+    "directLakeMode": true,
+    "automaticRefresh": true,
+    "semanticModelOptimization": true
+  },
+  "governance": {
+    "purviewIntegration": true,
+    "dataSensitivityLabels": true,
+    "encryptionAtRest": true
+  }
+}

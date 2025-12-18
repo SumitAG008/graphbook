@@ -1,0 +1,39 @@
+{
+  "name": "Microsoft Graph API Configuration",
+  "description": "Microsoft Graph for collaboration and workflow automation via SAP BTP",
+  "endpoint": {
+    "baseUrl": "https://graph.microsoft.com/v1.0",
+    "betaUrl": "https://graph.microsoft.com/beta"
+  },
+  "authentication": {
+    "type": "OAuth2",
+    "tokenEndpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/v2.0/token",
+    "grantType": "client_credentials",
+    "clientId": "<azure-app-client-id>",
+    "clientSecret": "<azure-app-client-secret>",
+    "scope": "https://graph.microsoft.com/.default"
+  },
+  "commonScopes": {
+    "users": "User.Read.All",
+    "groups": "Group.Read.All",
+    "mail": "Mail.Read",
+    "calendar": "Calendars.Read",
+    "files": "Files.Read.All",
+    "teams": "Team.ReadBasic.All"
+  },
+  "sapBtpIntegration": {
+    "destinationType": "HTTP",
+    "destinationName": "MS_GRAPH_API",
+    "useCloudConnector": false
+  },
+  "configuration": {
+    "timeout": 30000,
+    "retryPolicy": {
+      "maxRetries": 3,
+      "retryAfterHeader": true
+    },
+    "rateLimiting": {
+      "respectThrottling": true
+    }
+  }
+}

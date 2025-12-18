@@ -1,0 +1,18 @@
+{
+  "Name": "SAP_BDC_DataProduct",
+  "Type": "HTTP",
+  "Description": "SAP Business Data Cloud - Data Product Connection",
+  "URL": "https://<tenant>.businessdatacloud.sap",
+  "ProxyType": "Internet",
+  "Authentication": "OAuth2ClientCredentials",
+  "tokenServiceURL": "https://<tenant>.authentication.sap.hana.ondemand.com/oauth/token",
+  "clientId": "<your-client-id>",
+  "clientSecret": "<your-client-secret>",
+  "Additional Properties": {
+    "HTML5.DynamicDestination": "true",
+    "WebIDEEnabled": "true",
+    "WebIDEUsage": "odata_gen"
+  },
+  "CloudConnectorLocationId": "",
+  "CloudConnectorVersion": "2"
+}
